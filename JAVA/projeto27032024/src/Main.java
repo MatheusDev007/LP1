@@ -9,17 +9,17 @@ public class Main {
         System.out.println("Digite o seu nome: ");
         objCliente.nome = ler.next();
         
-        boolean cpfValido = false;
-        while (!cpfValido) {
+        boolean cpfValido;
+        do {
             System.out.println("Digite o seu CPF: ");
             String cpf = ler.next();
-            if (ValidaCPF(cpf)) {
+            cpfValido = ValidaCPF(cpf);
+            if (cpfValido) {
                 objCliente.cpf = cpf;
-                cpfValido = true;
             } else {
                 System.out.println("CPF inválido. Digite novamente.");
             }
-        }
+        } while (!cpfValido);
 
         System.out.println("Digite o seu RG: ");
         objCliente.rg = ler.next();
@@ -42,10 +42,10 @@ public class Main {
     public static boolean ValidaCPF (String cpf) {
         if(cpf.length() != 14){
             return false;
-        }else if(cpf.charAt(3) != '.' && cpf.charAt(7) != '.' && cpf.charAt(11) != '-'){
+        } else if(cpf.charAt(3) != '.' && cpf.charAt(7) != '.' && cpf.charAt(11) != '-'){
             return false;
-    }else{
+        } else {
             return true;
-    }
         }
+    }
 }
